@@ -30,7 +30,7 @@ const animalSeeds = [
     species: "bottlenose dolphin",
   },
   {
-    name: "Dr.",
+    name: "Doctor",
     species: "octopus",
     color: "reddish orange",
   },
