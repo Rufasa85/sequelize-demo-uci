@@ -24,4 +24,44 @@ router.post("/",(req,res)=>{
    })
 })
 
+router.post("/seed", (req, res) => {
+   Animal.bulkCreate([
+     {
+       name: "Barbara",
+       species: "manatee"
+     },
+     {
+      name: "Flipper",
+      species: "bottlenose dolphin"
+    },
+    {
+      name: "Dr.",
+      species: "octopus",
+      color:"reddish orange"
+    },
+   ]).then(data=>{
+     res.json(data);
+   })
+ });
+ 
+ router.delete("/:id", (req, res) => {
+   Animal.destroy({
+     where: {
+       id: req.params.id,
+     },
+   }).then((data) => {
+     res.json(data);
+   });
+ });
+ 
+ router.put("/:id", (req, res) => {
+   Animal.update(req.body, {
+     where: {
+       id: req.params.id,
+     },
+   }).then((data) => {
+     res.json(data);
+   });
+ });
+
 module.exports = router;
