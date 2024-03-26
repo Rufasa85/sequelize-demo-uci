@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS aquarium_db;
+CREATE DATABASE aquarium_db;
