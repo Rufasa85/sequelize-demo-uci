@@ -7,11 +7,18 @@ Tank.init({
     // add properites here, ex:
     name: {
          type: DataTypes.STRING,
-         allowNull:false
+         allowNull:false,
+         unique:true,
+         validate:{
+            len:[4]
+         }
     },
     gallons:{
         type:DataTypes.INTEGER,
-        allowNull:false
+        allowNull:false,
+        validate:{
+            min:1
+        }
     },
     isSalt:{
         type:DataTypes.BOOLEAN,

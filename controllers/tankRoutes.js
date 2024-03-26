@@ -44,31 +44,6 @@ router.post("/", (req, res) => {
   }).catch(err=>{
     console.log(err);
     res.status(500).json({msg:"error occurred",err})
-  });;
-});
-
-router.post("/seed", (req, res) => {
-  Tank.bulkCreate([
-    {
-      name: "tropical ocean",
-      gallons: 5000,
-      isSalt: true,
-    },
-    {
-      name: "north pacific rockfish",
-      gallons: 1200,
-      isSalt: true,
-    },
-    {
-      name: "lakes of washington",
-      gallons: 300,
-      isSalt: false,
-    },
-  ]).then(data=>{
-    res.json(data);
-  }).catch(err=>{
-    console.log(err);
-    res.status(500).json({msg:"error occurred",err})
   });
 });
 
@@ -85,7 +60,7 @@ router.delete("/:id", (req, res) => {
   }).catch(err=>{
     console.log(err);
     res.status(500).json({msg:"error occurred",err})
-  });;
+  });
 });
 
 router.put("/:id", (req, res) => {
@@ -101,7 +76,7 @@ router.put("/:id", (req, res) => {
   }).catch(err=>{
     console.log(err);
     res.status(500).json({msg:"error occurred",err})
-  });;
+  });
 });
 
 module.exports = router;
