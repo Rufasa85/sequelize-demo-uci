@@ -1,6 +1,6 @@
 require("dotenv").config();
 const sequelize = require("../config/connection");
-const {User,Tank,Animal} = require("../models");
+const {User,Tank,Animal,Fan} = require("../models");
 
 const tankSeeds = [
   {
@@ -56,6 +56,17 @@ const userSeeds = [
     password: "caudalPenduncle",
   },
 ];
+const fanSeeds = [
+  {
+    name:"Tommy"
+  },
+  {
+    name:"Tammy"
+  },
+  {
+   name:"Timmy"
+  },
+];
 
 //with promises
 //   sequelize.sync({force:true}).then(()=>{
@@ -84,11 +95,15 @@ const seedMe = async () => {
     });
     const tankData = await Tank.bulkCreate(tankSeeds);
     const animalData = await Animal.bulkCreate(animalSeeds);
+    const fanData = await Fan.bulkCreate(fanSeeds);
     console.table(tankData.map((td) => td.toJSON()));
     console.table(animalData.map((ad) => ad.toJSON()));
     console.table(userData.map((ud) => ud.toJSON()));
+    console.table(fanData.map((fd) => fd.toJSON()));
+    await fanData[0].addAnimals([1,3])
+    await animalData[1].addFans([1,2])
     process.exit(0);
-  } catch (error) {
+  } catch (err) {
     console.log(err);
     process.exit(0);
   }
