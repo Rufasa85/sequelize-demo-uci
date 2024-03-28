@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Tank = require("../models/Tank");
+const {Tank} = require("../models");
 
 
 //with promises
