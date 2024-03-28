@@ -7,4 +7,7 @@ router.use("/api/tanks",tankRoutes)
 const animalRoutes = require("./animalRoutes");
 router.use("/api/animals",animalRoutes)
 
+const userRoutes = require("./userRoutes");
+router.use("/api/users",userRoutes)
+
 module.exports = router;
