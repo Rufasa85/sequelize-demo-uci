@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {Tank} = require("../models");
+const {Tank,Animal} = require("../models");
 
 
 //with promises
@@ -27,7 +27,9 @@ router.get("/", async (req, res) => {
 
 
 router.get("/:id", (req, res) => {
-  Tank.findByPk(req.params.id).then((data) => {
+  Tank.findByPk(req.params.id,{
+    include:[Animal]
+  }).then((data) => {
     if(data==null){
       return res.status(404).json({msg:"no such tank exists!"})
     }

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {User} = require('../models');
+const {User,Animal,Tank} = require('../models');
 const bcrypt = require("bcrypt");
 
 router.get("/", async (req, res) => {
@@ -15,7 +15,12 @@ router.get("/", async (req, res) => {
   
   router.get("/:id", async (req, res) => {
     try {
-      const data = await User.findByPk(req.params.id);
+      const data = await User.findByPk(req.params.id,{
+        include:[{
+          model:Tank,
+          include:[Animal]
+        }]
+      });
       if (data == null) {
         return res.status(404).json({ msg: "no such User exists!" });
       }
