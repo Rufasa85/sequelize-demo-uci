@@ -76,7 +76,9 @@ const seedMe = async () => {
     await sequelize.sync({ force: true });
     const tankData = await Tank.bulkCreate(tankSeeds);
     const animalData = await Animal.bulkCreate(animalSeeds);
-    const userData = await User.bulkCreate(userSeeds);
+    const userData = await User.bulkCreate(userSeeds,{
+      individualHooks:true
+    });
     console.table(tankData.map((td) => td.toJSON()));
     console.table(animalData.map((ad) => ad.toJSON()));
     console.table(userData.map((ud) => ud.toJSON()));

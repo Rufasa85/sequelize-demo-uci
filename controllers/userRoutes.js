@@ -82,6 +82,7 @@ router.get("/", async (req, res) => {
         where: {
           id: req.params.id,
         },
+        individualHooks:true
       });
       if (data[0] === 0) {
         return res.status(404).json({ msg: "no such tank exists!" });
